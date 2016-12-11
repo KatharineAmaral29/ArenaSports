@@ -6,31 +6,90 @@ var infoWindow;
 // Para utilizar este código basta alterar a informação contida nesta variável
 var markersData = [
    {
-      lat: 40.6386333,
-      lng: -8.745,
-      nome: "Parque de Campismo Praia da Barra",
-      morada1:"Rua Diogo Cão, 125",
-      morada2: "Praia da Barra",
-      codPostal: "3830-772 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
+      lat: -3.7335439,
+      lng: -38.5032676,
+      nome: "CrossFit 085",
+      endereco:"Rua Carvalho Lima, 55",
+      telefone: "(85) 3035-3952 " // não colocar virgula no último item de cada maracdor
    },
    {
-      lat: 40.59955,
-      lng: -8.7498167,
-      nome: "Parque de Campismo da Costa Nova",
-      morada1:"Quinta dos Patos, n.º 2",
-      morada2: "Praia da Costa Nova",
-      codPostal: "3830-453 Gafanha da Encarnação" // não colocar virgula no último item de cada maracdor
-   },
+      lat: -3.7929111,
+      lng: -38.5675668,
+      nome: "Crossfit 6450 maraponga",
+      endereco:"Rua Carlos Studart, 231",
+      telefone: "(85) 98773-3079" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.7413906,
+      lng: -38.4849239,
+      nome: "Crossfit Cangaço",
+      endereco:"Rua Vilebaldo Águiar, 301",
+      telefone: "(85) 99605-8663" // não colocar virgula no último item de cada maracdor
+	},
    {
-      lat: 40.6247167,
-      lng: -8.7129167,
-      nome: "Parque de Campismo da Gafanha da Nazaré",
-      morada1:"Rua dos Balneários do Complexo Desportivo",
-      morada2: "Gafanha da Nazaré",
-      codPostal: "3830-225 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
-   } // não colocar vírgula no último marcador
+      lat: -3.7958409,
+      lng: -38.4845406,
+      nome: "CrossFit Tríade",
+      endereco:"Avenida Oliveira Paiva, 2455",
+      telefone: "(85) 3271-0171" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.7524575,
+      lng: -38.5284157,
+      nome: "Crossfit Dragão do Mar",
+      endereco:"Rua Dr. Ratisbona, 40",
+      telefone: "(85) 98860-8063" // não colocar virgula no último item de cada maracdor
+	},
+   {
+      lat: -3.7889328,
+      lng: -38.4710198,
+      nome: "Crossfit Radiação",
+      endereco:"Rua Dr. Ernesto Monteiro, 1305",
+      telefone: "(85) 3103-0939" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.7360628,
+      lng: -38.4941769,
+      nome: "Jangada Porão CrossFit",
+      endereco:"Rua Coronel Linhares, 870",
+      telefone: "(85) 3035-8060" // não colocar virgula no último item de cada maracdor
+	},
+   {
+      lat: -3.7815265,
+      lng: -38.4882973,
+      nome: "Crossfit Gurkha",
+      endereco:"Avenida Cel. José Philomeno Gomes, 1255",
+      telefone: "(85) 3109-2414" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.7371025,
+      lng: -38.4909851,
+      nome: "Central do Corpo - Galpão - CrossFit",
+      endereco:" Rua Coronel Jucá, 523 - 05",
+      telefone: "(85) 3085-0942" // não colocar virgula no último item de cada maracdor
+	},
+   {
+      lat: -3.7334457,
+      lng: -38.4873604,
+      nome: "CrossGym",
+      endereco:"Rua República do Líbano, 1415",
+      telefone: "(85) 3267-4795" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.8153545,
+      lng: -38.4819422,
+      nome: "Mega Gym Academia",
+      endereco:"Avenida Washington Soares, 6450",
+      telefone: "(85) 3274-9000" // não colocar virgula no último item de cada maracdor
+	},	
+   {
+      lat: -3.808103,
+      lng: -38.4680948,
+      nome: "CrossFit Iracema",
+      endereco:"Av. Maestro Lisboa, 1322",
+      telefone: "(85) 3114-2056" // não colocar virgula no último item de cada maracdor
+	  } // não colocar vírgula no último marcador
 ];
-
 
 function initialize() {
    var mapOptions = {
@@ -70,11 +129,10 @@ function displayMarkers(){
 
       var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
       var nome = markersData[i].nome;
-      var morada1 = markersData[i].morada1;
-      var morada2 = markersData[i].morada2;
-      var codPostal = markersData[i].codPostal;
+      var endereco = markersData[i].endereco;
+      var telefone = markersData[i].telefone;
 
-      createMarker(latlng, nome, morada1, morada2, codPostal);
+      createMarker(latlng, nome, endereco, telefone);
 
       // Os valores de latitude e longitude do marcador são adicionados à
       // variável bounds
@@ -88,7 +146,7 @@ function displayMarkers(){
 }
 
 // Função que cria os marcadores e define o conteúdo de cada Info Window.
-function createMarker(latlng, nome, morada1, morada2, codPostal){
+function createMarker(latlng, nome, endereco, telefone){
    var marker = new google.maps.Marker({
       map: map,
       position: latlng,
@@ -102,9 +160,8 @@ function createMarker(latlng, nome, morada1, morada2, codPostal){
       // Variável que define a estrutura do HTML a inserir na Info Window.
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + nome + '</div>' +
-         '<div class="iw_content">' + morada1 + '<br />' +
-         morada2 + '<br />' +
-         codPostal + '</div></div>';
+         '<div class="iw_content">' + endereco + '<br />' +
+         telefone + '<br />';
       
       // O conteúdo da variável iwContent é inserido na Info Window.
       infoWindow.setContent(iwContent);
