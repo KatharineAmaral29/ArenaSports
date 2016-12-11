@@ -6,29 +6,26 @@ var infoWindow;
 // Para utilizar este código basta alterar a informação contida nesta variável
 var markersData = [
    {
-      lat: 40.6386333,
-      lng: -8.745,
-      nome: "Parque de Campismo Praia da Barra",
-      morada1:"Rua Diogo Cão, 125",
-      morada2: "Praia da Barra",
-      codPostal: "3830-772 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
+      lat: -3.8039707,
+      lng: -38.5296991,
+      nome: "Campo de Futebol BNB",
+      endereco:"Avenida Heróis do Acre, 99-339",
+      telefone: "Sem telefone" // não colocar virgula no último item de cada maracdor
    },
    {
-      lat: 40.59955,
-      lng: -8.7498167,
-      nome: "Parque de Campismo da Costa Nova",
-      morada1:"Quinta dos Patos, n.º 2",
-      morada2: "Praia da Costa Nova",
-      codPostal: "3830-453 Gafanha da Encarnação" // não colocar virgula no último item de cada maracdor
-   },
-   {
-      lat: 40.6247167,
-      lng: -8.7129167,
-      nome: "Parque de Campismo da Gafanha da Nazaré",
-      morada1:"Rua dos Balneários do Complexo Desportivo",
-      morada2: "Gafanha da Nazaré",
-      codPostal: "3830-225 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
-   } // não colocar vírgula no último marcador
+      lat: -3.7477116,
+      lng: -38.5191801,
+      nome: "Praça da LBA",
+      endereco:"Avenida Soriano Albuquerque, s/ nº",
+      telefone: "Sem telefone" // não colocar virgula no último item de cada maracdor
+	},
+	{
+      lat: -3.7688874,
+      lng: -38.4816098,
+      nome: "UNIFOR - Universidade de Fortaleza",
+      endereco:"Avenida Washington Soares, 1321",
+      telefone: "(85) 3477-3000" // não colocar virgula no último item de cada maracdor
+	} // não colocar vírgula no último marcador
 ];
 
 
@@ -70,11 +67,10 @@ function displayMarkers(){
 
       var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
       var nome = markersData[i].nome;
-      var morada1 = markersData[i].morada1;
-      var morada2 = markersData[i].morada2;
-      var codPostal = markersData[i].codPostal;
+      var endereco = markersData[i].endereco;
+      var telefone = markersData[i].telefone;
 
-      createMarker(latlng, nome, morada1, morada2, codPostal);
+      createMarker(latlng, nome, endereco, telefone);
 
       // Os valores de latitude e longitude do marcador são adicionados à
       // variável bounds
@@ -88,7 +84,7 @@ function displayMarkers(){
 }
 
 // Função que cria os marcadores e define o conteúdo de cada Info Window.
-function createMarker(latlng, nome, morada1, morada2, codPostal){
+function createMarker(latlng, nome, endereco, telefone){
    var marker = new google.maps.Marker({
       map: map,
       position: latlng,
@@ -102,9 +98,8 @@ function createMarker(latlng, nome, morada1, morada2, codPostal){
       // Variável que define a estrutura do HTML a inserir na Info Window.
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + nome + '</div>' +
-         '<div class="iw_content">' + morada1 + '<br />' +
-         morada2 + '<br />' +
-         codPostal + '</div></div>';
+         '<div class="iw_content">' + endereco + '<br />' +
+         telefone + '<br />';
       
       // O conteúdo da variável iwContent é inserido na Info Window.
       infoWindow.setContent(iwContent);
