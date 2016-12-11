@@ -6,31 +6,48 @@ var infoWindow;
 // Para utilizar este código basta alterar a informação contida nesta variável
 var markersData = [
    {
-      lat: 40.6386333,
-      lng: -8.745,
-      nome: "Parque de Campismo Praia da Barra",
-      morada1:"Rua Diogo Cão, 125",
-      morada2: "Praia da Barra",
-      codPostal: "3830-772 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
+      lat: -3.7360539,
+      lng: -38.4809085,
+      nome: "Academia Cearense de Tenis",
+      endereco:"Rua Paulo Morais, 333",
+      telefone: "(85) 3234-3377" // não colocar virgula no último item de cada maracdor
    },
    {
-      lat: 40.59955,
-      lng: -8.7498167,
-      nome: "Parque de Campismo da Costa Nova",
-      morada1:"Quinta dos Patos, n.º 2",
-      morada2: "Praia da Costa Nova",
-      codPostal: "3830-453 Gafanha da Encarnação" // não colocar virgula no último item de cada maracdor
-   },
+      lat: -3.7866268,
+      lng: -38.48911,
+      nome: "Winners Tennis Fitnes",
+      endereco:"Rua General Caiado de Castro, 366",
+      telefone: "(85) 3045-8610" // não colocar virgula no último item de cada maracdor
+  },
    {
-      lat: 40.6247167,
-      lng: -8.7129167,
-      nome: "Parque de Campismo da Gafanha da Nazaré",
-      morada1:"Rua dos Balneários do Complexo Desportivo",
-      morada2: "Gafanha da Nazaré",
-      codPostal: "3830-225 Gafanha da Nazaré" // não colocar virgula no último item de cada maracdor
-   } // não colocar vírgula no último marcador
+      lat: -3.7511245,
+      lng: -38.4988212,
+      nome: "Marreco Tenis Clube",
+      endereco:"Av. Pontes Vieira, 2490",
+      telefone: "(85) 3272-2899" // não colocar virgula no último item de cada maracdor
+	  },
+   {
+      lat: -3.764668,
+      lng: -38.4857905,
+      nome: "Academia Top Tennis",
+      endereco:"Rua Eliseu Uchôa Beco, 600",
+      telefone: "(85) 99900-9327" // não colocar virgula no último item de cada maracdor
+	  },
+   {
+      lat: -3.7769694,
+      lng: -38.4879078,
+      nome: "Viva Tennis",
+      endereco:"Av. Cel. José Philomeno Gomes, s/nº",
+      telefone: "(85) 99666-6716" // não colocar virgula no último item de cada maracdor
+	  }, 
+	{
+      lat: -3.7338074,
+      lng: -38.5057607,
+      nome: "Federação Cearense De Tênis",
+      endereco:"Av. Santos Dumont, 847",
+      telefone: "(85) 98797-9114" // não colocar virgula no último item de cada maracdor
+	  }, // não colocar vírgula no último marcador
 ];
-
 
 function initialize() {
    var mapOptions = {
@@ -70,11 +87,10 @@ function displayMarkers(){
 
       var latlng = new google.maps.LatLng(markersData[i].lat, markersData[i].lng);
       var nome = markersData[i].nome;
-      var morada1 = markersData[i].morada1;
-      var morada2 = markersData[i].morada2;
-      var codPostal = markersData[i].codPostal;
+      var endereco = markersData[i].endereco;
+      var telefone = markersData[i].telefone;
 
-      createMarker(latlng, nome, morada1, morada2, codPostal);
+      createMarker(latlng, nome, endereco, telefone);
 
       // Os valores de latitude e longitude do marcador são adicionados à
       // variável bounds
@@ -88,7 +104,7 @@ function displayMarkers(){
 }
 
 // Função que cria os marcadores e define o conteúdo de cada Info Window.
-function createMarker(latlng, nome, morada1, morada2, codPostal){
+function createMarker(latlng, nome, endereco, telefone){
    var marker = new google.maps.Marker({
       map: map,
       position: latlng,
@@ -102,9 +118,8 @@ function createMarker(latlng, nome, morada1, morada2, codPostal){
       // Variável que define a estrutura do HTML a inserir na Info Window.
       var iwContent = '<div id="iw_container">' +
             '<div class="iw_title">' + nome + '</div>' +
-         '<div class="iw_content">' + morada1 + '<br />' +
-         morada2 + '<br />' +
-         codPostal + '</div></div>';
+         '<div class="iw_content">' + endereco + '<br />' +
+         telefone + '<br />';
       
       // O conteúdo da variável iwContent é inserido na Info Window.
       infoWindow.setContent(iwContent);
