@@ -17,7 +17,8 @@ var markersData = [
       lng: -38.5154002,
       nome: "Ginásio Paulo Sarasate",
       endereco:"Rua Ildefonso Albano, 2050",
-      telefone: "(85) 3452-5897" // não colocar virgula no último item de cada maracdor   },
+      telefone: "(85) 3452-5897" // não colocar virgula no último item de cada maracdor
+	 },
    {
       lat: -3.7386703,
       lng: -38.4914894,
